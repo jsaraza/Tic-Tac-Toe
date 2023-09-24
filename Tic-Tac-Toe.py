@@ -1,16 +1,88 @@
 import pygame
-import pygame
+import sys
+import TIc_Tac_Toe as TTT
+
+# Initialize Pygame
 pygame.init()
-screen_width = 300
-screen_height = 300
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Tic-Tac-Toe")
 
-white = (255, 255, 255)
-black = (0, 0, 0)
-font = pygame.font.Font(None, 36)
-
-board = [['' for _ in range(3)] for _ in range(3)]
+board = TTT.tic_tac_toe()
 
 
+# Constants
+SCREEN_WIDTH = 300
+SCREEN_HEIGHT = 300
+GRID_SIZE = 3  # Size of the grid (3x3 for Tic-Tac-Toe)
+LINE_COLOR = (0, 0, 0)  # Color of the grid lines
+LINE_WIDTH = 10
+CIRCLE_RADIUS = 40
 
+
+# Create the game window
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Tic-Tac-Toe Grid")
+
+# Define the grid lines
+GRID_LINE_WIDTH = 5  # Width of the grid lines
+line_spacing = SCREEN_WIDTH // GRID_SIZE
+
+
+def Draw_X(x,y):
+    # convert board coordinates to pixel cordinates
+    X = x * 100
+    Y = y * 100
+    pygame.draw.line(screen, LINE_COLOR, (X + 10, Y + 10), (X + 90, Y + 90), LINE_WIDTH)
+    pygame.draw.line(screen, LINE_COLOR, (X + 90, Y + 10), (X + 10, Y + 90), LINE_WIDTH)
+
+def Draw_O(x,y):
+    # convert board coordinates to pixel cordinates
+    X = x * 100
+    Y = y * 100
+    pygame.draw.circle(screen, LINE_COLOR, (X + 50, Y + 50), CIRCLE_RADIUS, LINE_WIDTH)
+
+
+
+
+screen.fill((255, 255, 255))
+
+turn = False
+
+# Main game loop
+running = True
+while running:
+
+    # Clear the screen
+    #screen.fill((255, 255, 255))
+    # Draw horizontal grid lines
+    for i in range(1, GRID_SIZE):
+        pygame.draw.line(screen, LINE_COLOR, (0, i * line_spacing), (SCREEN_WIDTH, i * line_spacing), GRID_LINE_WIDTH)
+
+    # Draw vertical grid lines
+    for i in range(1, GRID_SIZE):
+        pygame.draw.line(screen, LINE_COLOR, (i * line_spacing, 0), (i * line_spacing, SCREEN_HEIGHT), GRID_LINE_WIDTH)
+
+
+
+
+    # Get mouse pos
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse button click
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            # Gets corrdinates of mouse click on board
+            cor_X = mouse_x // 100
+            cor_Y = mouse_y // 100
+            print(cor_X, cor_Y)
+            if turn == False:
+                Draw_X(cor_X,cor_Y)
+            else:
+                Draw_O(cor_X,cor_Y)
+            turn = not turn
+    
+            
+    # Update the display
+    pygame.display.flip()
+
+# Quit Pygame
+pygame.quit()
+sys.exit()
