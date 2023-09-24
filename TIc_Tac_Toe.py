@@ -25,7 +25,6 @@ class tic_tac_toe:
                 counter = 0
             if counter == 3:
                 return True
-
         return False
     
     def checkHorizontal(self, col: int):
@@ -43,16 +42,18 @@ class tic_tac_toe:
         x = 0
         if self.board[x][x] == self.board[x + 1][x + 1] and self.board[x+2][x+2] == self.board[x + 1][x +1]:
             return True
-        if self.board[x+2][x] == self.board[x + 1][x + 1] and self.board[x][x+2] == self.board[x + 1][x + 1]:
+        elif self.board[x+2][x] == self.board[x + 1][x + 1] and self.board[x][x+2] == self.board[x + 1][x + 1]:
             return True
+        else: 
+            return False
 
 
     def checkWin(self, row: int, col: int):
         if self.checkDiagonal():
-            return print("Win!")
+            return True
         elif self.checkHorizontal(col):
-            return print("Win")
+            return True
         elif self.checkRow(row):
-            return print("Win")
+            return True
         else:
-            return
+            return False
