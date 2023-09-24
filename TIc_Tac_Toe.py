@@ -28,9 +28,11 @@ class tic_tac_toe:
                 counter += 1
             else:
                 counter = 0
-            if counter == 3:
-                return True
-        return False
+        
+        if counter == 3:
+             return True
+        else:
+            return False
     
     def checkHorizontal(self, col: int):
         counter = 0
@@ -39,9 +41,11 @@ class tic_tac_toe:
                 counter+=1
             else:
                 counter = 0
-            if counter == 3:
-                return True
-        return False
+        
+        if counter == 3:
+            return True
+        else:
+            return False
 
     def checkDiagonal(self):
         x = 0
