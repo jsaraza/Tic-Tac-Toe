@@ -8,11 +8,16 @@ class tic_tac_toe:
 
     def click(self, x : int, y :int):
         self.board[x][y] = self.player
-        self.checkWin(x, y)
-        if self.player == "O":
-            self.player = "X"
+        if self.checkWin(x, y):
+            return True
         else:
-            self.player = "O"
+            if self.player == "O":
+                self.player = "X"
+            else:
+                self.player = "O"
+    
+        return False
+        
         
 
     
