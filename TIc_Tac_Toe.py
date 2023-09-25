@@ -55,12 +55,16 @@ class tic_tac_toe:
                 counter +=1
             else:
                 counter = 0
-                
+        
+
         for j in range(3):
             if self.board[i][i] == self.player:
                 counter +=1 
             else:
                 return False
+
+        if counter == 3:
+            return True
 
 
     def checkWin(self, row: int, col: int):
