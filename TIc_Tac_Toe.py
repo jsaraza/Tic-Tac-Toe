@@ -15,11 +15,8 @@ class tic_tac_toe:
                 self.player = "X"
             else:
                 self.player = "O"
-    
         return False
         
-        
-
     
     def checkRow(self, row:int):
         counter = 0
