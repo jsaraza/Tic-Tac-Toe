@@ -14,7 +14,7 @@ class tic_tac_toe:
             self.player = "X"
         else:
             self.player = "O"
-            
+
         return False
         
     
@@ -55,7 +55,7 @@ class tic_tac_toe:
         
 
         for j in range(3):
-            if self.board[i][i] == self.player:
+            if self.board[j][j] == self.player:
                 counter +=1 
             else:
                 return False
