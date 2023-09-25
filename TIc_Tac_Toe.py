@@ -53,6 +53,8 @@ class tic_tac_toe:
             else:
                 counter = 0
         
+        if counter == 3:
+            return True
 
         for j in range(3):
             if self.board[j][j] == self.player:
