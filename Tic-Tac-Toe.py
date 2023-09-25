@@ -54,6 +54,7 @@ turn = False
 # Main game loop
 running = True
 gameIsWon = False
+numOfSquares = 0
 while running:
 
     # Clear the screen
@@ -70,11 +71,12 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and gameIsWon == False:
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and gameIsWon == False and numOfSquares < 9:
             mouse_x, mouse_y = pygame.mouse.get_pos()
             # Gets corrdinates of mouse click on board
             cor_X = mouse_x // 100
             cor_Y = mouse_y // 100
+            numOfSquares += 1
             if board.click(cor_X, cor_Y):
                 gameIsWon = True
                 print(board.player + " won!")
@@ -90,10 +92,14 @@ while running:
             elif letter == "O":
                 Draw_O(row,col)
 
+    if numOfSquares == 9:
+        text = font.render("Tie!", True, (255, 100, 0))
+        screen.blit(text, (110, 120))
+
     # Displays winning message if player won
     if gameIsWon == True:
-        text = font.render(board.player + " won!", True, (255, 100, 0))  # "Hello, Pygame!" is the text, (255, 0, 0) is the text color (red)
-        screen.blit(text, (70, 120))  # (200, 200) is the position where the text will be drawn
+        text = font.render(board.player + " won!", True, (255, 100, 0))
+        screen.blit(text, (70, 120))
 
     
             
