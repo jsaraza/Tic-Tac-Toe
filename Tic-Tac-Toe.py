@@ -1,6 +1,7 @@
 import pygame
 import sys
 import TIc_Tac_Toe as TTT
+import TictacToeAI as AI
 
 # Initialize Pygame
 pygame.init()
@@ -56,6 +57,11 @@ running = True
 gameIsWon = False
 numOfSquares = 0
 while running:
+
+    if board.player == "O":
+        gameIsWon = AI.list_random_move(board)
+        
+
 
     # Clear the screen
     #screen.fill((255, 255, 255))
