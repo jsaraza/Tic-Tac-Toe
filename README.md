@@ -1,1 +1,1 @@
-# Monkey
+# Basic tictactoe collaboration game
