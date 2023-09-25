@@ -10,11 +10,11 @@ class tic_tac_toe:
         self.board[x][y] = self.player
         if self.checkWin(x, y):
             return True
+        if self.player == "O":
+            self.player = "X"
         else:
-            if self.player == "O":
-                self.player = "X"
-            else:
-                self.player = "O"
+            self.player = "O"
+            
         return False
         
     
