@@ -47,14 +47,20 @@ class tic_tac_toe:
         else:
             return False
 
-    def checkDiagonal(self):
-        x = 0
-        if self.board[x][x] == self.board[x + 1][x + 1] and self.board[x+2][x+2] == self.board[x + 1][x +1]:
-            return True
-        elif self.board[x+2][x] == self.board[x + 1][x + 1] and self.board[x][x+2] == self.board[x + 1][x + 1]:
-            return True
-        else: 
-            return False
+    def checkDiagonalLeft(self):
+        counter = 0
+        
+        for i in range(3):
+            if self.board[i][2-i] == self.player:
+                counter +=1
+            else:
+                counter = 0
+                
+        for j in range(3):
+            if self.board[i][i] == self.player:
+                counter +=1 
+            else:
+                return False
 
 
     def checkWin(self, row: int, col: int):
