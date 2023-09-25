@@ -47,7 +47,7 @@ class tic_tac_toe:
         else:
             return False
 
-    def checkDiagonalLeft(self):
+    def checkDiagonal(self):
         counter = 0
         
         for i in range(3):
