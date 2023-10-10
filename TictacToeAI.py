@@ -19,3 +19,14 @@ def list_random_move(board:TTT.tic_tac_toe):
     return False
 
 
+
+def legal_moves(board:TTT.tic_tac_toe):
+    moves = []
+
+    for row in range(3):
+        for col in range(3):
+           if board.board[row][col] == " ":
+                moves.append((row,col))
+    
+    return moves
+
